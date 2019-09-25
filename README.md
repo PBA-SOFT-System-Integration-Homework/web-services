@@ -9,3 +9,17 @@ We've made a client that fetches data from the two servers, assemples it, and pr
 We've made the REST server in Java, SOAP server in Node and client in node aswell.
 
 bada bing bada bum.
+
+## SOAP client
+Created in NodeJS
+### Installation
+*Requires NodeJS installed*
+
+```javascript
+npm install
+```
+### How to run
+```javascript
+npm start
+```
+SOAP service will be available on localhost:8000/carService

@@ -1,0 +1,113 @@
+<definitions name = "CarService"
+   targetNamespace = "http://localhost:8000/CarService.wsdl"
+   xmlns = "http://schemas.xmlsoap.org/wsdl/"
+   xmlns:soap = "http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:tns = "http://localhost:8000/CarService.wsdl"
+   xmlns:xsd = "http://www.w3.org/2001/XMLSchema" 
+    xmlns:xsd1="http://localhost:8000/CarService.xsd">
+
+    <types>
+        <schema targetNamespace="http://localhost:8000/CarService.wsdl" 
+            xmlns="http://www.w3.org/2000/10/XMLSchema">
+            <element name='carType'>
+                <complexType >
+                    <sequence>
+                        <element name='name' type='xsd:string'/>
+                        <element name='numberOfSeats' type='xsd:int'/>
+                        <element name='price' type='xsd:float'/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name='car'>
+                <complexType>
+                    <complexContent>
+                        <sequence>
+                            <element name='licensePlate' type='xsd:string'/>
+                            <element name='carType' type='tns:carType'/>
+                        </sequence>
+                    </complexContent>
+                </complexType>
+            </element>
+        </schema>
+    </types>
+
+    <!-- Request messages -->
+    <message name = "getCarsReq">
+        <part name = "void" type = "xsd:string"/>
+    </message>
+    <message name = "deleteCarReq">
+        <part name = "id" type = "xsd:int"/>
+    </message>
+    <message name = "addCarReq">
+        <part name = "car" type = "tns:car"/>
+    </message>
+
+    <!-- Resp messages -->
+    <message name = "getCarsRes">
+        <part name = "status" type = "xsd:string"/>
+    </message>
+    <message name = "deleteCarRes">
+        <part name = "status" type = "xsd:string"/>
+    </message>
+    <message name = "addCarRes">
+        <part name = "status" type = "xsd:string"/>
+    </message>
+
+
+    <portType name = "CarServicePort">
+        <operation name = "getCars">
+            <input message = "tns:getCarsReq"/>
+            <output message = "tns:getCarsRes"/>
+        </operation>
+        <operation name = "deleteCar">
+            <input message = "tns:deleteCarReq"/>
+            <output message = "tns:deleteCarRes"/>
+        </operation>
+        <operation name = "addCar">
+            <input message = "tns:addCarReq"/>
+            <output message = "tns:addCarRes"/>
+        </operation>
+
+    </portType>
+
+    <binding name = "getCars_Binding" type = "tns:CarServicePort">
+        <soap:binding style = "rpc"
+         transport = "http://schemas.xmlsoap.org/soap/http"/>
+        <operation name = "getCars">
+            <soap:operation soapAction = "getCars"/>
+            <input>
+                <soap:body encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/" namespace = "urn:examples:CarService" use = "encoded"/>
+            </input>
+            <output>
+                <soap:body encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/" namespace = "urn:examples:CarService" use = "encoded"/>
+            </output>
+        </operation>
+        <operation name = "deleteCar">
+            <soap:operation soapAction = "deleteCar"/>
+            <input>
+                <soap:body encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/" namespace = "urn:examples:CarService" use = "encoded"/>
+            </input>
+            <output>
+                <soap:body encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/" namespace = "urn:examples:CarService" use = "encoded"/>
+            </output>
+        </operation>
+        <operation name = "addCar">
+            <soap:operation soapAction = "addCar"/>
+            <input>
+                <soap:body encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/" namespace = "urn:examples:CarService" use = "encoded"/>
+            </input>
+            <output>
+                <soap:body encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/" namespace = "urn:examples:CarService" use = "encoded"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name = "CarService">
+        <documentation>WSDL File for CarService</documentation>
+        <port binding = "tns:getCars_Binding" name = "CarServicePort">
+            <soap:address
+            location = "http://localhost:8000/carService" />
+        </port>
+    </service>
+
+</definitions>
