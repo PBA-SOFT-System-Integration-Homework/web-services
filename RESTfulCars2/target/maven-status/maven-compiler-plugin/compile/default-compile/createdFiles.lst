@@ -1,0 +1,5 @@
+com\mycompany\restfulcars2\ApplicationConfig.class
+entities\Cars.class
+entities\CarType.class
+com\mycompany\restfulcars2\CarsResource.class
+entities\Car.class
