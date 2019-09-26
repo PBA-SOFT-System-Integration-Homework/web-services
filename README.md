@@ -35,3 +35,8 @@ This client is a part of the SOAP Server, as a simple script.
 ```javascript
 node test_server.js
 ```
+
+### Contributors 
+Stanislav Novitski
+Alexander Winther Hørsted-Andersen
+Mathias Bigler
