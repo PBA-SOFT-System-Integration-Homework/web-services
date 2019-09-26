@@ -1,4 +1,4 @@
-Team Wing it
+Team Wing it (Alexander Winther Hørsted-Andersen, Stanislav Novitski, Mathias Bigler)
 
 We have made an amazing web service setup.
 
